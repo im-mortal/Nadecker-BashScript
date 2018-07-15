@@ -2,8 +2,7 @@
 echo ""
 echo "NadekoBot Installer started."
 
-if hash git 1>/dev/null 2>&1
-then
+if hash git 1>/dev/null 2>&1; then
     echo ""
     echo "Git Installed."
 else
@@ -29,7 +28,7 @@ cd "$root"
 
 echo ""
 echo "Downloading NadekoBot, please wait."
-git clone -b $1 --depth 1 --recursive https://github.com/Kwoth/NadekoBot.git
+git clone -b ${1:="1.9"} --depth 1 --recursive https://github.com/Kwoth/NadekoBot.git
 echo ""
 echo "NadekoBot downloaded."
 
