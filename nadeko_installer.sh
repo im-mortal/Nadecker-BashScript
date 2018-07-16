@@ -1,24 +1,23 @@
-#!/bin/sh
-echo ""
-echo "NadekoBot Installer started."
+#!/bin/bash
+info() {
+    printf '%s\n' "$@"
+}
+
+info '' "NadekoBot Installer started."
 
 if hash git 1>/dev/null 2>&1; then
-    echo ""
-    echo "Git Installed."
+    info '' "Git Installed."
 else
-    echo ""
-    echo "Git is not installed. Please install Git."
+    info '' "Git is not installed. Please install Git."
     exit 1
 fi
 
 
 if hash dotnet 1>/dev/null 2>&1
 then
-    echo ""
-    echo "Dotnet installed."
+    info '' "Dotnet installed."
 else
-    echo ""
-    echo "Dotnet is not installed. Please install dotnet."
+    info '' "Dotnet is not installed. Please install dotnet."
     exit 1
 fi
 
@@ -26,26 +25,13 @@ root=/opt
 
 cd "$root"
 
-echo ""
-echo "Downloading NadekoBot, please wait."
+info '' "Downloading NadekoBot, please wait."
 git clone -b ${1:="1.9"} --depth 1 --recursive https://github.com/Kwoth/NadekoBot.git
-echo ""
-echo "NadekoBot downloaded."
-
-echo ""
-echo "Downloading Nadeko dependencies"
+info '' "NadekoBot downloaded." '' "Downloading Nadeko dependencies"
 cd $root/NadekoBot
 dotnet restore
-echo ""
-echo "Download done"
-
-echo ""
-echo "Building NadekoBot"
+info '' "Download done" '' "Building NadekoBot"
 #dotnet add /opt/NadekoBot/src/NadekoBot package ImageSharp --version 1.0.0-alpha9-00194 --source https://www.myget.org/F/imagesharp/api/v3/index.json
 dotnet build --configuration Release
-echo ""
-echo "Building done."
-
-echo ""
-echo "Installation Complete."
+info '' "Building done." "Installation Complete."
 exit 0
