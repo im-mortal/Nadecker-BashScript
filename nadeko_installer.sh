@@ -26,7 +26,10 @@ root=/opt
 cd "$root"
 
 info '' "Downloading NadekoBot, please wait…"
-git clone -b ${1:="1.9"} --depth 1 --recursive https://github.com/Kwoth/NadekoBot.git
+
+[[ -z $1 ]] && branch=$NADEKOBOT_DEFAULT_BRANCH || branch=$1
+git clone -b $branch --depth 1 --recursive https://github.com/Kwoth/NadekoBot.git
+
 info '' "NadekoBot $1 downloaded." '' "Downloading Nadeko dependencies…"
 cd $root/NadekoBot
 dotnet restore
