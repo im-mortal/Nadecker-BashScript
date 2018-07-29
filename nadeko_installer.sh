@@ -28,7 +28,7 @@ cd "$root"
 info '' "Downloading NadekoBot, please wait…"
 
 [[ -z $1 ]] && branch=$NADEKOBOT_DEFAULT_BRANCH || branch=$1
-git clone -b $branch --depth 1 --recursive https://github.com/Kwoth/NadekoBot.git
+git clone -q -b $branch --depth 1 --recursive https://github.com/Kwoth/NadekoBot.git
 
 info '' "NadekoBot ${branch} downloaded." '' "Downloading Nadeko dependencies…"
 cd $root/NadekoBot
