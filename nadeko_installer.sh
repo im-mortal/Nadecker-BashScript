@@ -30,11 +30,10 @@ info '' "Downloading NadekoBot, please wait…"
 [[ -z $1 ]] && branch=$NADEKOBOT_DEFAULT_BRANCH || branch=$1
 git clone -b $branch --depth 1 --recursive https://github.com/Kwoth/NadekoBot.git
 
-info '' "NadekoBot $1 downloaded." '' "Downloading Nadeko dependencies…"
+info '' "NadekoBot ${branch} downloaded." '' "Downloading Nadeko dependencies…"
 cd $root/NadekoBot
 dotnet restore
 info '' "Download done." '' "Building NadekoBot…"
-#dotnet add /opt/NadekoBot/src/NadekoBot package ImageSharp --version 1.0.0-alpha9-00194 --source https://www.myget.org/F/imagesharp/api/v3/index.json
 dotnet build --configuration Release
 info '' "Building done." "Installation Complete."
 exit 0
